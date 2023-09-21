@@ -12,21 +12,24 @@ beforeEach(() => {
 });
 
 describe('QuoteGenerator', () => {
-  it('displays the title', () => {
+  it('displays the title', async () => {
     render(<QuoteGenerator />);
-    expect(screen.getByText('The Greates Quotes By Ron Swanson')).toBeVisible();
+    expect(
+      await screen.findByText('The Greates Quotes By Ron Swanson')
+    ).toBeVisible();
   });
-  it('displays the image', () => {
+  it('displays the image', async () => {
     render(<QuoteGenerator />);
-    expect(screen.getByAltText('swanson')).toBeVisible();
+    expect(await screen.findByAltText('swanson')).toBeVisible();
   });
-  it('displays the New Quote button', () => {
+  it('displays the New Quote button', async () => {
     render(<QuoteGenerator />);
-    expect(screen.getByRole('button', { name: 'New Quote' })).toBeVisible();
+    expect(
+      await screen.findByRole('button', { name: 'New Quote' })
+    ).toBeVisible();
   });
   it('loads quote upon first render', async () => {
     render(<QuoteGenerator />);
-
     expect(
       await screen.findByText(
         'Swanson: Capitalism: Gods way of determining who is smart and who is poor.'
